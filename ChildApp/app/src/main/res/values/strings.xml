@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">ChildApp</string>
+    <string name="app_name">Parental Control</string>
+    <string name="Password">Password</string>
+    <string name="buttonEnable">ENABLE</string>
 </resources>
