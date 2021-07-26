@@ -2,4 +2,6 @@
     <string name="app_name">Parental Control</string>
     <string name="Password">Password</string>
     <string name="buttonEnable">ENABLE</string>
+    <string name="welcomeMsg">Welcome</string>
+    <string name="buttonDisable">DISABLE</string>
 </resources>

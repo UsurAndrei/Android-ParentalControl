@@ -17,7 +17,7 @@
         android:fontFamily="sans-serif-black"
         android:gravity="center_horizontal"
         android:inputType="textPersonName"
-        android:text="Welcome!"
+        android:text="@string/welcomeMsg"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="34sp"
         android:textColor="@android:color/black"
@@ -44,19 +44,39 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextWelcomeMsg" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonEnable"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="132dp"
         android:layout_height="61dp"
         android:layout_marginTop="68dp"
+        android:onClick="clickButtonEnable"
         android:text="@string/buttonEnable"
+        android:textColor="@color/black"
         android:textSize="20sp"
-        app:backgroundTint="#2e7d32"
+        app:backgroundTint="@color/button_enable"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
         app:layout_constraintVertical_bias="0.009" />
+
+    <Button
+        android:id="@+id/buttondDisable"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="132dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="232dp"
+        android:onClick="clickButtonDisable"
+        android:text="@string/buttonDisable"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:backgroundTint="@color/button_disable"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEnable"
+        app:layout_constraintVertical_bias="0.98" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

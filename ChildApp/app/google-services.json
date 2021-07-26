@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "581804362992",
+    "firebase_url": "https://parentalcontrol-c9137-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "parentalcontrol-c9137",
+    "storage_bucket": "parentalcontrol-c9137.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581804362992:android:83654d4dc33153cfdf4635",
+        "android_client_info": {
+          "package_name": "com.example.ChildApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581804362992-5hq6b5ipno82qneimtniqi5ta89fg6s7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMFK2Iti1UeSjcZuHdGVmiQoXIY6xLqm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581804362992-5hq6b5ipno82qneimtniqi5ta89fg6s7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581804362992:android:ad07046e2f7f7969df4635",
+        "android_client_info": {
+          "package_name": "com.example.childapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581804362992-5hq6b5ipno82qneimtniqi5ta89fg6s7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMFK2Iti1UeSjcZuHdGVmiQoXIY6xLqm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581804362992-5hq6b5ipno82qneimtniqi5ta89fg6s7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
