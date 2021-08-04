@@ -4,4 +4,6 @@
     <string name="buttonEnable">ENABLE</string>
     <string name="welcomeMsg">Welcome</string>
     <string name="buttonDisable">DISABLE</string>
+    <string name="MonActive">Parental Control: ON</string>
+    <string name="MonInactive">Parental Control: OFF</string>
 </resources>

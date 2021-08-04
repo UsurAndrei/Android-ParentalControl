@@ -28,6 +28,7 @@ public class MyControlService extends Service {
         return null;
     }
 
+    // Used for showing Toast msgs
     public void showMessage(String Message)
     {
         Toast toast = Toast.makeText(getApplicationContext(), Message, Toast.LENGTH_LONG);
