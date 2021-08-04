@@ -3,6 +3,7 @@ package com.example.childapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,15 +25,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         BtDisable.setOnClickListener(this); // Register Disable Button
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent(this, MyControlService.class);
         // Get clicked view ID
         switch (v.getId()) {
             case R.id.buttonEnable:
-                // Do something when enable is clicked
+                startService(intent);
                 break;
             case R.id.buttonDisable:
-                // Do something when disable is clicked
+                stopService(intent);
                 break;
             default:
                 break;
