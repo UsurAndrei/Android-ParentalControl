@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     // Check which permissions are not granted, add them in an ArrayList, then request them from the user
-    // requestPermissions method takes String[] as second parameter so convertion is needed
+    // requestPermissions method takes String[] as second parameter so conversion is needed
     // requestCode is not used here but it's required as a parameter
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void reqPermissions(String[] reqPermissions) {
@@ -77,6 +77,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 nonGrantedPerms.add(reqPermission);
             }
         }
-        ActivityCompat.requestPermissions(this, nonGrantedPerms.toArray(new String[nonGrantedPerms.size()]), requestCode);
+        // App was crashing if the list was empty
+        if(!nonGrantedPerms.isEmpty()) {
+            ActivityCompat.requestPermissions(this, nonGrantedPerms.toArray(new String[nonGrantedPerms.size()]), requestCode);
+        }
     }
 }
