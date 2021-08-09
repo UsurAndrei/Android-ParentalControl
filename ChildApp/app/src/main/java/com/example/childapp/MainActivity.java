@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // Check which permissions are not granted, add them in an ArrayList, then request them from the user
     // requestPermissions method takes String[] as second parameter so conversion is needed
-    // requestCode is not used here but it's required as a parameter
+    // requestCode is not used here but it's required as a parameter, should be >=0
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void reqPermissions(String[] reqPermissions) {
         int requestCode = 1;
