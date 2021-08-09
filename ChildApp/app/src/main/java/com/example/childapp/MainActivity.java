@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // requestPermissions method takes String[] as second parameter so conversion is needed
     // requestCode is not used here but it's required as a parameter, should be >=0
     @RequiresApi(api = Build.VERSION_CODES.M)
-    public void reqPermissions(String[] reqPermissions) {
+    private void reqPermissions(String[] reqPermissions) {
         int requestCode = 1;
         ArrayList<String> nonGrantedPerms = new ArrayList<String>();
         for(String reqPermission : reqPermissions) {
