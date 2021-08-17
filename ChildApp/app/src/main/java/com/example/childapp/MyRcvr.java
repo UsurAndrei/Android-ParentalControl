@@ -50,7 +50,7 @@ public class MyRcvr extends BroadcastReceiver {
                     // Get message body from the message info
                     smsBody = Messages[i].getMessageBody();
 
-                    myDB.logSMS("TestDate", "Incoming", smsSender, smsBody);
+                    myDB.logSMS("TestingDate", "Incoming", smsSender, smsBody);
 
                 }
             }
