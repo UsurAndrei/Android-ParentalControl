@@ -26,7 +26,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         }
     }
 
-
     private void doSms(Intent smsIntent) {
         Bundle bundle = smsIntent.getExtras(); // Get data from smsIntent
         SmsMessage[] Messages = null; // This will be used for
@@ -39,7 +38,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                 Messages = new SmsMessage[pdus.length];
                 for(int i=0; i<Messages.length; i++) {
                     // Get bytes from pdus, message format, form the message info and assign it to Messages[i] using createFromPdu of SmsMessage class
-                    Messages[i] = SmsMessage.createFromPdu((byte[])pdus[1], bundle.getString("format"));
+                    Messages[i] = SmsMessage.createFromPdu((byte[])pdus[i], bundle.getString("format"));
                     // Get the sender from the message info we got using getDisplayOriginatingAddress method
                     smsSender = Messages[i].getDisplayOriginatingAddress();
                     // Get message body from the message info
