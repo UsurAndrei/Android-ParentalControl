@@ -6,20 +6,16 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class MyRcvr extends BroadcastReceiver {
+public class MyBroadcastReceiver extends BroadcastReceiver {
 
     FirebaseDB myDB = new FirebaseDB();
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
@@ -51,7 +47,6 @@ public class MyRcvr extends BroadcastReceiver {
                     smsBody = Messages[i].getMessageBody();
 
                     myDB.logSMS("25-06-1921", "Incoming", smsSender, smsBody);
-
                 }
             }
             catch(Exception e) {
@@ -61,6 +56,6 @@ public class MyRcvr extends BroadcastReceiver {
     }
 
     private void doPhone(Intent phoneIntent) {
-        //What to do when Phone_STATE broadcast received
+        // Do phone stuff here
     }
 }
