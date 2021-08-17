@@ -31,7 +31,7 @@ public class MyRcvr extends BroadcastReceiver {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+
     private void doSms(Intent smsIntent) {
         Bundle bundle = smsIntent.getExtras(); // Get data from smsIntent
         SmsMessage[] Messages = null; // This will be used for
@@ -50,7 +50,7 @@ public class MyRcvr extends BroadcastReceiver {
                     // Get message body from the message info
                     smsBody = Messages[i].getMessageBody();
 
-                    myDB.logSMS("TestingDate", "Incoming", smsSender, smsBody);
+                    myDB.logSMS("25-06-1921", "Incoming", smsSender, smsBody);
 
                 }
             }
