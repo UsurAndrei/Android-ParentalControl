@@ -28,14 +28,15 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
     private void doSms(Intent smsIntent) {
         Bundle bundle = smsIntent.getExtras(); // Get data from smsIntent
-        SmsMessage[] Messages = null; // This will be used for
+        SmsMessage[] Messages = null; // This will be used for combining more than one messages (if one message is too long)
         String smsSender;
         String smsBody;
 
         if(bundle != null) {
             try {
                 Object[] pdus = (Object[])bundle.get("pdus");
-                Messages = new SmsMessage[pdus.length];
+                Messages = new SmsMessage[pdus.length]; // Allocate memory for pdus.length messages
+                // For each message in Messages
                 for(int i=0; i<Messages.length; i++) {
                     // Get bytes from pdus, message format, form the message info and assign it to Messages[i] using createFromPdu of SmsMessage class
                     Messages[i] = SmsMessage.createFromPdu((byte[])pdus[i], bundle.getString("format"));
