@@ -16,11 +16,11 @@ public class FirebaseDB {
     }
 
     // Used to log SMS messages
-    void logSMS(String date, String type, String sender, String message) {
+    void logSMS(String dateTime, String type, String sender, String message) {
         // Create new unique SMS ID and create node using push() and return the unique ID using getKey()
         String smsID = myDatabaseRef.push().getKey();
         // Set values to path of the SMS using the unique generated key
-        myDatabaseRef.child("logsSMS").child(smsID).child("date").setValue(date);
+        myDatabaseRef.child("logsSMS").child(smsID).child("date-time").setValue(date);
         myDatabaseRef.child("logsSMS").child(smsID).child("type").setValue(type);
         myDatabaseRef.child("logsSMS").child(smsID).child("sender").setValue(sender);
         myDatabaseRef.child("logsSMS").child(smsID).child("message").setValue(message);

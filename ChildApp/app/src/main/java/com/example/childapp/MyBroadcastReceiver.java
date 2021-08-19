@@ -6,8 +6,13 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
+import android.telephony.TelephonyManager;
 
 import androidx.annotation.RequiresApi;
+
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class MyBroadcastReceiver extends BroadcastReceiver {
@@ -31,6 +36,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         SmsMessage[] Messages = null; // This will be used for combining more than one messages (if one message is too long)
         String smsSender;
         String smsBody;
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
         if(bundle != null) {
             try {
@@ -45,7 +51,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                     // Get message body from the message info
                     smsBody = Messages[i].getMessageBody();
 
-                    myDB.logSMS("25-06-1921", "Incoming", smsSender, smsBody);
+                    myDB.logSMS(timeStamp, "Incoming", smsSender, smsBody);
                 }
             }
             catch(Exception e) {
@@ -55,6 +61,34 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     }
 
     private void doPhone(Intent phoneIntent) {
-        // Do phone stuff here
+        String state = phoneIntent.getStringExtra(TelephonyManager.EXTRA_STATE);
+        String caller = phoneIntent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
+        String status;
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        Instant startTime;
+        Instant endTime;
+        int duration;
+
+        if(state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
+            if(caller != null) {
+                status = "Ringing";
+            }
+        }
+        if(state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
+            if(caller != null) {
+                status = "Answered";
+                startTime = Instant.now();
+            }
+        }
+        if(state.equals(TelephonyManager.EXTRA_STATE_IDLE))
+            if(caller != null) {
+                if(status.equals("Ringing")) {
+
+                }
+                else if(status.equals("Answered")) {
+                    endTime = Instant.now();
+
+                }
+            }
     }
 }
