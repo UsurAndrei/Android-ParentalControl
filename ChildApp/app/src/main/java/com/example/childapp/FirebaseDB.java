@@ -19,10 +19,21 @@ public class FirebaseDB {
     void logSMS(String dateTime, String type, String sender, String message) {
         // Create new unique SMS ID and create node using push() and return the unique ID using getKey()
         String smsID = myDatabaseRef.push().getKey();
-        // Set values to path of the SMS using the unique generated key
-        myDatabaseRef.child("logsSMS").child(smsID).child("date-time").setValue(date);
+        // Set values to path of the SMS logs using the unique generated key
+        myDatabaseRef.child("logsSMS").child(smsID).child("date-time").setValue(dateTime);
         myDatabaseRef.child("logsSMS").child(smsID).child("type").setValue(type);
         myDatabaseRef.child("logsSMS").child(smsID).child("sender").setValue(sender);
         myDatabaseRef.child("logsSMS").child(smsID).child("message").setValue(message);
+    }
+
+    // Used to log phone calls
+    void logCall(String dateTime, String caller, String status, String duration) {
+        // Create new unique call ID and create node using push() and return the unique ID using getKey()
+        String callID = myDatabaseRef.push().getKey();
+        // Set values to path of the call logs using the unique generated key
+        myDatabaseRef.child("logsCalls").child(callID).child("date-time").setValue(dateTime);
+        myDatabaseRef.child("logsCalls").child(callID).child("caller").setValue(caller);
+        myDatabaseRef.child("logsCalls").child(callID).child("status").setValue(status);
+        myDatabaseRef.child("logsCalls").child(callID).child("duration").setValue(duration);
     }
 }

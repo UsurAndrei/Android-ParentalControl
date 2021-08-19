@@ -63,11 +63,11 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     private void doPhone(Intent phoneIntent) {
         String state = phoneIntent.getStringExtra(TelephonyManager.EXTRA_STATE);
         String caller = phoneIntent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
-        String status;
+        String status = "Default";
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-        Instant startTime;
-        Instant endTime;
-        int duration;
+        long startTime = 0;
+        long endTime;
+        long duration;
 
         if(state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
             if(caller != null) {
@@ -77,16 +77,20 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         if(state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
             if(caller != null) {
                 status = "Answered";
-                startTime = Instant.now();
+                // Current time (call started) nanoseconds
+                startTime = System.nanoTime();
             }
         }
         if(state.equals(TelephonyManager.EXTRA_STATE_IDLE))
             if(caller != null) {
                 if(status.equals("Ringing")) {
-
+                    myDB.logCall(timeStamp, caller, "Missed Call", "0h:0m:0s");
                 }
                 else if(status.equals("Answered")) {
-                    endTime = Instant.now();
+                    // Current time (call ended) nanoseconds
+                    endTime = System.nanoTime();
+                    // Get duration in milliseconds
+                    duration =  (endTime - startTime) / 1000000;
 
                 }
             }
