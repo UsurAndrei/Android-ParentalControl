@@ -27,7 +27,7 @@ public class FirebaseDB {
     }
 
     // Used to log phone calls
-    void logCall(String dateTime, String caller, String status, String duration) {
+    void logCall(String dateTime, String caller, String status, String duration, String type) {
         // Create new unique call ID and create node using push() and return the unique ID using getKey()
         String callID = myDatabaseRef.push().getKey();
         // Set values to path of the call logs using the unique generated key
@@ -35,5 +35,6 @@ public class FirebaseDB {
         myDatabaseRef.child("logsCalls").child(callID).child("caller").setValue(caller);
         myDatabaseRef.child("logsCalls").child(callID).child("status").setValue(status);
         myDatabaseRef.child("logsCalls").child(callID).child("duration").setValue(duration);
+        myDatabaseRef.child("logsCalls").child(callID).child("type").setValue(type);
     }
 }
