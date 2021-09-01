@@ -1,22 +1,34 @@
 package com.example.childapp;
 
+import android.Manifest;
 import android.app.Service;
-import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.location.LocationListener;
 import android.os.Build;
 import android.os.IBinder;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class MyControlService extends Service {
+public class MyControlService extends Service implements LocationListener {
     MyBroadcastReceiver receiver;
+    LocationManager LocMan;
+    Location location;
 
+    @RequiresApi(api = Build.VERSION_CODES.S)
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // BROADCAST RECEIVER REGISTRATION
         receiver = new MyBroadcastReceiver();
         // Create intent filter
         IntentFilter filter = new IntentFilter();
@@ -25,10 +37,13 @@ public class MyControlService extends Service {
         filter.addAction("android.intent.action.PHONE_STATE");
         // register Receiver to listen for the actions above
         this.registerReceiver(receiver, filter);
+
+        // LOCATION TRACKING ACTIVATION
+        activateTracking();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public int onStartCommand (Intent intent, int flags, int startId) {
+    public int onStartCommand(Intent intent, int flags, int startId) {
         showMessage("Monitoring Enabled");
         return START_STICKY; // START_STICKY is used for services that are explicitly started and stopped as needed
     }
@@ -46,10 +61,47 @@ public class MyControlService extends Service {
         return null;
     }
 
-    // Used for showing Toast msgs
-    private void showMessage(String Message)
-    {
+    // Used for showing Toast messages
+    private void showMessage(String Message) {
         Toast toast = Toast.makeText(getApplicationContext(), Message, Toast.LENGTH_LONG);
         toast.show();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.S)
+    private void activateTracking() {
+        LocMan = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        String provider;
+
+        // As the app runs continuously, network as provider is preferred instead of GPS
+        // Comes with lower power consumption and less accuracy, but that is not that big of a problem
+        // GPS can be turned off easily
+        Criteria criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+        criteria.setPowerRequirement(Criteria.POWER_LOW);
+        // Don't provide Altitude and Bearing and Speed
+        criteria.setAltitudeRequired(false);
+        criteria.setBearingRequired(false);
+        criteria.setSpeedRequired(false);
+        // Provider not allowed to incur monetary cost.
+        criteria.setCostAllowed(false);
+
+        // Get provider according to Criteria, enabled only ones (we only want the Network anyway)
+        provider = LocMan.getBestProvider(criteria, true);
+        // Check if we've got a provider, might be no providers available
+        if (provider != null) {
+            // Check if Permission ACCESS_COARSE_LOCATION is granted
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // Get last known location and execute onLocationChanged()
+                location = LocMan.getLastKnownLocation(provider);
+                onLocationChanged(location);
+                // Request location updates from provider every 10s and minimum distance 10 meters and the listener
+                LocMan.requestLocationUpdates(provider, 10000, 5, this);
+            }
+        }
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
     }
 }

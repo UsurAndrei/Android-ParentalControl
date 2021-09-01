@@ -7,7 +7,6 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -41,7 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 Manifest.permission.READ_SMS,
                                 Manifest.permission.READ_PHONE_STATE,
                                 Manifest.permission.READ_CALL_LOG,
-                                Manifest.permission.INTERNET};
+                                Manifest.permission.INTERNET,
+                                Manifest.permission.ACCESS_COARSE_LOCATION
+        };
         reqPermissions(permissions);
     }
 
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    // Check which permissions are not granted, add them in an ArrayList, then request them from the user
+    // Check which permissions are not granted, add them in an ArrayList, then request them from the user if needed (not all are needed but I added them anyway)
     // requestPermissions method takes String[] as second parameter so conversion is needed
     // requestCode is not used here but it's required as a parameter, should be >=0
     @RequiresApi(api = Build.VERSION_CODES.M)
