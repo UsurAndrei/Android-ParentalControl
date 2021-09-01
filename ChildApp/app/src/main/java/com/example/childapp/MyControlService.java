@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.IBinder;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 
@@ -22,6 +23,8 @@ public class MyControlService extends Service implements LocationListener {
     MyBroadcastReceiver receiver;
     LocationManager LocMan;
     Location location;
+
+    FirebaseDB myDB = new FirebaseDB();
 
     @RequiresApi(api = Build.VERSION_CODES.S)
     @Override
@@ -37,14 +40,13 @@ public class MyControlService extends Service implements LocationListener {
         filter.addAction("android.intent.action.PHONE_STATE");
         // register Receiver to listen for the actions above
         this.registerReceiver(receiver, filter);
-
-        // LOCATION TRACKING ACTIVATION
-        activateTracking();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    @RequiresApi(api = Build.VERSION_CODES.S)
     public int onStartCommand(Intent intent, int flags, int startId) {
         showMessage("Monitoring Enabled");
+        // LOCATION TRACKING ACTIVATION
+        activateTracking();
         return START_STICKY; // START_STICKY is used for services that are explicitly started and stopped as needed
     }
 
@@ -53,6 +55,8 @@ public class MyControlService extends Service implements LocationListener {
         super.onDestroy();
         // Unregister the receiver after service is Destroyed
         this.unregisterReceiver(receiver);
+        // Deactivate Location Tracking
+        LocMan.removeUpdates (this);
         showMessage("Monitoring Disabled");
     }
 
@@ -90,18 +94,19 @@ public class MyControlService extends Service implements LocationListener {
         // Check if we've got a provider, might be no providers available
         if (provider != null) {
             // Check if Permission ACCESS_COARSE_LOCATION is granted
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 // Get last known location and execute onLocationChanged()
                 location = LocMan.getLastKnownLocation(provider);
                 onLocationChanged(location);
-                // Request location updates from provider every 10s and minimum distance 10 meters and the listener
-                LocMan.requestLocationUpdates(provider, 10000, 5, this);
+                // Request location updates from provider every 10s and minimum distance 2 meters and the listener
+                LocMan.requestLocationUpdates(provider, 10000, 2, this);
             }
         }
     }
 
     @Override
-    public void onLocationChanged(Location location) {
-
+    public void onLocationChanged(@NonNull Location location) {
+        myDB.logLocation(location.getLongitude(), location.getLatitude());
+        showMessage("LOCATION UPDATE");
     }
 }

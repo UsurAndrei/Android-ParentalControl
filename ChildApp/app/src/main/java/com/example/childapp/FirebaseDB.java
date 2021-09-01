@@ -9,8 +9,8 @@ public class FirebaseDB {
     public FirebaseDB() {
         // Get database instance from URL
         FirebaseDatabase myDB = FirebaseDatabase.getInstance("https://parentalcontrol-c9137-default-rtdb.europe-west1.firebasedatabase.app/");
-        // Automatically stores the data offline when there is no internet connection. When the device connects to internet, all the data will be pushed to realtime database
-        myDB.setPersistenceEnabled(true);
+        // // Automatically stores the data offline when there is no internet connection. When the device connects to internet, all the data will be pushed to realtime database
+        //myDB.setPersistenceEnabled(true);
         // getReference() gives us reference to realtime database JSON top node, to perform operations later
         myDatabaseRef = myDB.getReference();
     }
@@ -39,7 +39,7 @@ public class FirebaseDB {
     }
 
     // Used to log location
-    void logLocation(String longitude, String latitude) {
+    void logLocation(Double longitude, Double latitude) {
         // Create new unique location update ID and create node using push() and return the unique ID using getKey()
         String locationID = myDatabaseRef.push().getKey();
         // Set values of longitude and latitude to the correct path
