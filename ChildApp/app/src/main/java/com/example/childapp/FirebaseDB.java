@@ -37,4 +37,13 @@ public class FirebaseDB {
         myDatabaseRef.child("logsCalls").child(callID).child("duration").setValue(duration);
         myDatabaseRef.child("logsCalls").child(callID).child("type").setValue(type);
     }
+
+    // Used to log location
+    void logLocation(String longitude, String latitude) {
+        // Create new unique location update ID and create node using push() and return the unique ID using getKey()
+        String locationID = myDatabaseRef.push().getKey();
+        // Set values of longitude and latitude to the correct path
+        myDatabaseRef.child("logsLocations").child(locationID).child("longitude").setValue(longitude);
+        myDatabaseRef.child("logsLocations").child(locationID).child("latitude").setValue(latitude);
+    }
 }
