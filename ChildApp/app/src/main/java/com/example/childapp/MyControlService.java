@@ -10,13 +10,15 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
-import android.location.LocationProvider;
 import android.os.Build;
 import android.os.IBinder;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class MyControlService extends Service implements LocationListener {
@@ -104,10 +106,11 @@ public class MyControlService extends Service implements LocationListener {
         }
     }
 
+    // If location was Null, app would crash
     @Override
     public void onLocationChanged(@NonNull Location location) {
         this.location = location;
-        myDB.logLocation(location.getLongitude(), location.getLatitude());
-        showMessage("LOCATION UPDATE");
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        myDB.logLocation(timeStamp, location.getLongitude(), location.getLatitude());
     }
 }
