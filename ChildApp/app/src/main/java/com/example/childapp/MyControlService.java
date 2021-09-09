@@ -10,10 +10,10 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
+import android.location.LocationProvider;
 import android.os.Build;
 import android.os.IBinder;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
@@ -106,6 +106,7 @@ public class MyControlService extends Service implements LocationListener {
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
+        this.location = location;
         myDB.logLocation(location.getLongitude(), location.getLatitude());
         showMessage("LOCATION UPDATE");
     }
