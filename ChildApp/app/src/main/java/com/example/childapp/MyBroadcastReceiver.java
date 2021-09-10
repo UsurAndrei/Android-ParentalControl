@@ -57,7 +57,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                     // Get message body from the message info
                     smsBody = Messages[i].getMessageBody();
 
-                    myDB.logSMS(timeStamp, "Incoming", smsSender, smsBody);
+                    myDB.logSMS(timeStamp, "Received", smsSender, smsBody);
                 }
             }
             catch(Exception e) {

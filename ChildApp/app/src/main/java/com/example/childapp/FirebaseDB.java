@@ -43,7 +43,7 @@ public class FirebaseDB {
         // Create new unique location update ID and create node using push() and return the unique ID using getKey()
         String locationID = myDatabaseRef.push().getKey();
         // Set values of longitude and latitude to the correct path
-        myDatabaseRef.child("logsCalls").child(locationID).child("date-time").setValue(dateTime);
+        myDatabaseRef.child("logsLocations").child(locationID).child("date-time").setValue(dateTime);
         myDatabaseRef.child("logsLocations").child(locationID).child("longitude").setValue(longitude);
         myDatabaseRef.child("logsLocations").child(locationID).child("latitude").setValue(latitude);
     }
