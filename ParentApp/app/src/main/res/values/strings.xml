@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ParentApp</string>
+    <string name="welcomeMsg">Welcome</string>
+    <string name="calls">Calls</string>
+    <string name="sms">Messages</string>
+    <string name="location">Location</string>
 </resources>

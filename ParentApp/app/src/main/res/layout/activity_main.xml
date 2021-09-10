@@ -4,15 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_purple"
     tools:context=".MainActivity">
 
-    <TextView
+    <EditText
+        android:id="@+id/editTextWelcomeMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="128dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="@string/welcomeMsg"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/black"
+        android:textSize="34sp"
+        android:typeface="sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/callButton"
+        android:layout_width="165dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="76dp"
+        android:text="@string/calls"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/smsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextWelcomeMsg" />
+
+    <Button
+        android:id="@+id/smsButton"
+        android:layout_width="165dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/sms"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/locationButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callButton" />
+
+    <Button
+        android:id="@+id/locationButton"
+        android:layout_width="165dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="250dp"
+        android:text="@string/location"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smsButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
