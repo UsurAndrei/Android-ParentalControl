@@ -20,7 +20,7 @@ public class FirebaseDB {
         // Create new unique SMS ID and create node using push() and return the unique ID using getKey()
         String smsID = myDatabaseRef.push().getKey();
         // Set values to path of the SMS logs using the unique generated key
-        myDatabaseRef.child("logsSMS").child(smsID).child("date-time").setValue(dateTime);
+        myDatabaseRef.child("logsSMS").child(smsID).child("timestamp").setValue(dateTime);
         myDatabaseRef.child("logsSMS").child(smsID).child("type").setValue(type);
         myDatabaseRef.child("logsSMS").child(smsID).child("number").setValue(number);
         myDatabaseRef.child("logsSMS").child(smsID).child("message").setValue(message);
@@ -31,7 +31,7 @@ public class FirebaseDB {
         // Create new unique call ID and create node using push() and return the unique ID using getKey()
         String callID = myDatabaseRef.push().getKey();
         // Set values to path of the call logs using the unique generated key
-        myDatabaseRef.child("logsCalls").child(callID).child("date-time").setValue(dateTime);
+        myDatabaseRef.child("logsCalls").child(callID).child("timestamp").setValue(dateTime);
         myDatabaseRef.child("logsCalls").child(callID).child("caller").setValue(caller);
         myDatabaseRef.child("logsCalls").child(callID).child("status").setValue(status);
         myDatabaseRef.child("logsCalls").child(callID).child("duration").setValue(duration);
@@ -43,7 +43,7 @@ public class FirebaseDB {
         // Create new unique location update ID and create node using push() and return the unique ID using getKey()
         String locationID = myDatabaseRef.push().getKey();
         // Set values of longitude and latitude to the correct path
-        myDatabaseRef.child("logsLocations").child(locationID).child("date-time").setValue(dateTime);
+        myDatabaseRef.child("logsLocations").child(locationID).child("timestamp").setValue(dateTime);
         myDatabaseRef.child("logsLocations").child(locationID).child("longitude").setValue(longitude);
         myDatabaseRef.child("logsLocations").child(locationID).child("latitude").setValue(latitude);
     }
