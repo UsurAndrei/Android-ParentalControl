@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">ParentApp</string>
+    <string name="app_name">PC - Parent</string>
     <string name="welcomeMsg">Welcome</string>
     <string name="calls">Calls</string>
     <string name="sms">Messages</string>
     <string name="location">Location</string>
     <string name="date_time">Date-Time:</string>
-    <string name="caller">Caller:</string>
+    <string name="caller">Number:</string>
     <string name="duration">Duration:</string>
     <string name="status">Status:</string>
     <string name="type">Type:</string>
