@@ -27,7 +27,6 @@ public class CallAdapter extends FirebaseRecyclerAdapter<Call, CallAdapter.CallV
         holder.duration.setText(model.getDuration());
         holder.status.setText(model.getStatus());
         holder.type.setText(model.getType());
-
     }
 
     // onCreateViewHolder is called by the RecyclerView expecting us to return a ViewHolder class that we are creating below
@@ -47,7 +46,8 @@ public class CallAdapter extends FirebaseRecyclerAdapter<Call, CallAdapter.CallV
             super(itemView);
             caller = itemView.findViewById(R.id.caller);
             timestamp = itemView.findViewById(R.id.timestamp);
-            duration = itemView.findViewById(R.id.status);
+            duration = itemView.findViewById(R.id.duration);
+            status = itemView.findViewById(R.id.status);
             type = itemView.findViewById(R.id.type);
         }
     }
