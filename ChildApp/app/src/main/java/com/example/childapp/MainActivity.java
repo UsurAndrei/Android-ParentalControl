@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,12 +23,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button BtEnable;
     Button BtDisable;
     TextView MainMessage;
+    Boolean isEnabled;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        isEnabled = false;
 
         BtEnable = (Button)findViewById(R.id.buttonEnable);
         BtDisable = (Button)findViewById(R.id.buttonDisable);
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         BtEnable.setOnClickListener(this); // Register Enable Button
         BtDisable.setOnClickListener(this); // Register Disable Button
 
+        // Add needed permissions to an array of Strings (not all of them need to be granted by the user but anyway)
         String[] permissions = {Manifest.permission.RECEIVE_SMS,
                                 Manifest.permission.SEND_SMS,
                                 Manifest.permission.READ_SMS,
@@ -46,6 +50,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         reqPermissions(permissions);
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
@@ -54,12 +63,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Get clicked view ID
         switch (v.getId()) {
             case R.id.buttonEnable:
-                startService(intent);
-                MainMessage.setText(R.string.MonActive);
+                if(!isEnabled) {
+                    startService(intent);
+                    MainMessage.setText(R.string.MonActive);
+                    isEnabled = true;
+                }
                 break;
             case R.id.buttonDisable:
-                stopService(intent);
-                MainMessage.setText(R.string.MonInactive);
+                if(isEnabled) {
+                    stopService(intent);
+                    MainMessage.setText(R.string.MonInactive);
+                    isEnabled = false;
+                }
                 break;
             default:
                 break;

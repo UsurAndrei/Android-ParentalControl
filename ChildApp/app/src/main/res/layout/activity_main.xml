@@ -46,8 +46,8 @@
     <Button
         android:id="@+id/buttonEnable"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="132dp"
-        android:layout_height="61dp"
+        android:layout_width="165dp"
+        android:layout_height="52dp"
         android:layout_marginTop="68dp"
         android:text="@string/buttonEnable"
         android:textColor="@color/black"
@@ -63,9 +63,9 @@
     <Button
         android:id="@+id/buttonDisable"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="132dp"
-        android:layout_height="61dp"
-        android:layout_marginBottom="232dp"
+        android:layout_width="165dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
         android:text="@string/buttonDisable"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -75,6 +75,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonEnable"
-        app:layout_constraintVertical_bias="0.98" />
+        app:layout_constraintVertical_bias="0.091" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
