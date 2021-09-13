@@ -4,12 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CallsList">
+    tools:context=".CallsList"
+    android:background="@color/background_purple">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCalls"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_purple"/>
+        android:layout_height="635dp"
+        android:background="@color/background_purple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="93dp"
+        android:background="@color/background_purple"
+        android:gravity="center"
+        android:text="@string/calls"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerCalls"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@
     <string name="duration">Duration:</string>
     <string name="status">Status:</string>
     <string name="type">Type:</string>
-    <string name="message">Message</string>
-    <string name="number">Number</string>
+    <string name="message">Message:</string>
+    <string name="number">Number:</string>
+    <string name="messages">Messages</string>
 </resources>
