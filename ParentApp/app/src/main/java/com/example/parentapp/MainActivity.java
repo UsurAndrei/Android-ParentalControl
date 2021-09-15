@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intentSMS = new Intent(this, MessagesList.class);
                 startActivity(intentSMS);
                 break;
+            case R.id.locationButton:
+                Intent intentLocation = new Intent(this, LocationsList.class);
+                startActivity(intentLocation);
+                break;
             default:
                 break;
         }
