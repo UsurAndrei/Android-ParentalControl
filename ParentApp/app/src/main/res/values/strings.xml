@@ -12,4 +12,8 @@
     <string name="message">Message:</string>
     <string name="number">Number:</string>
     <string name="messages">Messages</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="locations">Locations</string>
+    <string name="latitude">Latitude:</string>
+    <string name="longitude">Longitude:</string>
 </resources>

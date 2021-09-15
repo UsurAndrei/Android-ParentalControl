@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Andrei/Documents/Android-Studio-Project/Android-ParentalControl/ParentApp/app/src/main/res/layout/activity_calls.xml" value="0.4" />
+        <entry key="..\:/Users/Andrei/Documents/Android-Studio-Project/Android-ParentalControl/ParentApp/app/src/main/res/layout/activity_locations_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Andrei/Documents/Android-Studio-Project/Android-ParentalControl/ParentApp/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/Andrei/Documents/Android-Studio-Project/Android-ParentalControl/ParentApp/app/src/main/res/layout/activity_maps.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Andrei/Documents/Android-Studio-Project/Android-ParentalControl/ParentApp/app/src/main/res/layout/activity_messages.xml" value="0.264" />
         <entry key="..\:/Users/Andrei/Documents/Android-Studio-Project/Android-ParentalControl/ParentApp/app/src/main/res/layout/activity_smslist.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Andrei/Documents/Android-Studio-Project/Android-ParentalControl/ParentApp/app/src/main/res/layout/call.xml" value="0.536" />
+        <entry key="..\:/Users/Andrei/Documents/Android-Studio-Project/Android-ParentalControl/ParentApp/app/src/main/res/layout/location.xml" value="0.4" />
         <entry key="..\:/Users/Andrei/Documents/Android-Studio-Project/Android-ParentalControl/ParentApp/app/src/main/res/layout/message.xml" value="0.4" />
       </map>
     </option>
