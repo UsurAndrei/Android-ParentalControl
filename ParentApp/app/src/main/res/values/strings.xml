@@ -16,4 +16,5 @@
     <string name="locations">Locations</string>
     <string name="latitude">Latitude:</string>
     <string name="longitude">Longitude:</string>
+    <string name="view_on_map">VIEW ON MAP ☸</string>
 </resources>
