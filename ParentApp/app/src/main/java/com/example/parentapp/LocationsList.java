@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -32,10 +33,14 @@ public class LocationsList extends AppCompatActivity {
         FirebaseRecyclerOptions<Location> options = new FirebaseRecyclerOptions.Builder<Location>().setQuery(databaseRef, Location.class).build();
 
         // Create adapter object based on the options above
-        adapter = new LocationAdapter(options);
+        adapter = new LocationAdapter(options, this);
 
         // Finally set the adapter as our recyclerView adapter
         recyclerView.setAdapter(adapter);
+
+        // Pressing back from MapsActivity, going back to LocationsList used to crash the application
+        // This fixed it, no idea why though
+        recyclerView.setItemAnimator(null);
     }
 
     @Override

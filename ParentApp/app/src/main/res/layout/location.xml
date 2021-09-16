@@ -37,7 +37,7 @@
             android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textColor="@color/text_grey"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/mapButton"
             app:layout_constraintStart_toEndOf="@+id/textView1"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+
             android:text="@string/longitude"
             android:textStyle="bold"
             android:textColor="@color/text_grey"
@@ -62,7 +63,7 @@
             android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textColor="@color/text_grey"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/mapButton"
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/latitude" />
         <TextView
@@ -71,11 +72,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
             android:text="@string/date_time"
             android:textStyle="bold"
             android:textColor="@color/text_grey"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
             android:id="@+id/timestamp"
@@ -86,23 +89,23 @@
             android:layout_marginEnd="16dp"
             android:text="TextView"
             android:textColor="@color/text_grey"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/mapButton"
             app:layout_constraintStart_toEndOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/longitude" />
 
         <Button
-            android:id="@+id/locationButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="VIEW ON MAP ☸"
+            android:id="@+id/mapButton"
+            android:layout_width="87dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="16dp"
             android:backgroundTint="@color/background_purple"
+            android:text="@string/view_on_map"
             android:textColor="@color/text_grey"
+            android:textSize="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView3"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.783" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
