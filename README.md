@@ -2,7 +2,7 @@
 + Project for my Mobile App Development class
 
 ## Description 
-+ This project is composed of two applications, one for the parent and one for the child. It logs the phone calls, SMS messages and location of the child.
++ This project is composed of two applications, one for the parent and one for the child. It logs the phone calls, SMS messages and location of the child. The parent can see the data in real time, using his own application.
 
 ## What I've learned so far:
 + Working on the UI of an android application.
