@@ -113,7 +113,7 @@ public class MyControlService extends Service implements LocationListener {
         // Check if we've got a provider, might be no providers available
         if (provider != null) {
             // Check if Permission ACCESS_COARSE_LOCATION is granted
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 // Get last known location and execute onLocationChanged()
                 location = LocMan.getLastKnownLocation(provider);
                 onLocationChanged(location);
